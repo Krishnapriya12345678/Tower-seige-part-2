@@ -131,10 +131,10 @@ return true
 
 }
 async function backImg(){
- var response=await fetch("http://worldclockapi.com/api/jsonp/cet/now?callback=mycallback")
+ var response=await fetch("http://worldclockapi.com/api/json/utc/now")
  
 var recieve=await response.json();
-var datetime= recieve.CurrentDateTime()
+var datetime= recieve.currentDateTime
 
 var hour=datetime.slice(11,13)
 console.log(hour)
