@@ -26,4 +26,11 @@ class Squares extends BaseClass{
         
       }
     }
+
+    score(){
+      if(this.visible<0 && this.visible>-100){
+        score=score+1
+      }
+    }
+    
   }

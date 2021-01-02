@@ -1,17 +1,22 @@
 
 var stone1
 var catapult1
+var backgroundImg1,backgroundImg
+
 var ground1,ground2,ground3
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-
+var score=0
+backgroundImg1="bg.png"
 function preload()
 {
-	
-}
+ 
 
+
+backImg()
+}
 function setup() {
 	createCanvas(900, 700);
 
@@ -50,9 +55,15 @@ ground1=new Ground(400,690,900,20)
 
 
 function draw() {
-  console.log(stone1.radius)
+  
+    if(backgroundImg){
+      background(backgroundImg);
+      }
+    
+
+
   rectMode(CENTER);
-  background("darkblue");
+ 
   
   drawSprites();
  
@@ -72,12 +83,27 @@ box12.display()
  box13.display()
  box14.display()
  box15.display()
+ box1.score()
+ box2.score()
+ box3.score()
+ box4.score()
+ box5.score()
+ box6.score()
+box7.score()
+ box8.score()
+box9.score()
+box10.score()
+ box11.score()
+box12.score()
+ box13.score()
+ box14.score()
+ box15.score()
  stone1.display()
  catapult1.display()
 ground1.display()
 ground2.display()
 
- 
+  text("SCORE "+score,200,50)
 }
 function mouseDragged(){
     Matter.Body.setPosition(stone1.body, {x: mouseX , y: mouseY});
@@ -104,9 +130,24 @@ return true
 }
 
 }
+async function backImg(){
+ var response=await fetch("http://worldclockapi.com/api/jsonp/cet/now?callback=mycallback")
+ 
+var recieve=await response.json();
+var datetime= recieve.CurrentDateTime()
+
+var hour=datetime.slice(11,13)
+console.log(hour)
+if(hour>6&&hour<18){
+backgroundImg1="bg.png"
+}else{
+backgroundImg1="bg1.jpg"
+}
+backgroundImg=loadImage(backgroundImg1)
+}
 
 
-
+ 
 
 
 
